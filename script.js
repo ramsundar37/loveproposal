@@ -289,3 +289,24 @@ function calculateFlames() {
         triggerConfetti();
     }
 }
+// Contact Modal Logic
+const infoBtn = document.getElementById('info-btn');
+const contactModal = document.getElementById('contact-modal');
+const modalClose = document.getElementById('modal-close');
+
+if (infoBtn && contactModal && modalClose) {
+    infoBtn.addEventListener('click', () => {
+        contactModal.classList.add('active');
+    });
+
+    modalClose.addEventListener('click', () => {
+        contactModal.classList.remove('active');
+    });
+
+    // Close on outside click
+    window.addEventListener('click', (e) => {
+        if (e.target === contactModal) {
+            contactModal.classList.remove('active');
+        }
+    });
+}
