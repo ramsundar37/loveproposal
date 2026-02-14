@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Proposal</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="theme-cute">
+    <div class="bg-gradient"></div>
+    <div id="particles-container"></div>
+
+    <main class="container">
+        <div class="glass-card" id="main-card">
+            <div class="bear-container-wrapper">
+                <div class="bear-animation left-bear">🧸</div>
+                <div class="emoji-container" id="emoji-display">
+                    <span class="emoji">💝</span>
+                </div>
+                <div class="bear-animation right-bear">🧸</div>
+            </div>
+
+            <h1 id="question-text">Will you be mine?</h1>
+            <p id="sub-text">You make my heart skip a beat...</p>
+
+            <div class="button-group">
+                <button id="yes-btn" class="btn btn-yes">Yes</button>
+                <div class="no-container">
+                    <button id="no-btn" class="btn btn-no">No</button>
+                    <div id="pleading-msg" class="pleading-msg">plz accept 🥺</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="celebration-overlay" id="celebration-overlay">
+            <div class="celebration-content" id="celebration-content">
+                <h1 class="celebration-title" id="celebration-msg">Yay! ❤️</h1>
+                <p id="celebration-sub-msg" class="celebration-sub-msg">You've made me the happiest person! ✨</p>
+                <div id="compliment-container"></div>
+                <div id="fireworks-container"></div>
+
+                <!-- Progressive Love Meter -->
+                <div class="progressive-love-meter">
+                    <div class="meter-label">Love Meter 💖</div>
+                    <div class="meter-bar-container">
+                        <div class="meter-bar-fill" id="progressive-meter-fill"></div>
+                    </div>
+                    <div class="meter-percent" id="progressive-meter-percent">0%</div>
+                </div>
+
+                <div id="story-page" class="story-page hidden">
+                    <div class="letter-container">
+                        <div class="envelope-wrapper">
+                            <div class="envelope-base"></div>
+                            <div class="envelope-top"></div>
+                            <div class="envelope-front-left"></div>
+                            <div class="envelope-front-right"></div>
+                            <div class="letter-paper">
+                                <div class="wax-seal">💖</div>
+                                <div id="step-1" class="step active">
+                                    <div class="story-scroll">
+                                        <div class="story-item">
+                                            <span class="story-icon">💖</span>
+                                            <p>The first time I saw you, my heart started to feel as if I was born for
+                                                you.
+                                            </p>
+                                            <p>You gave me a reason to be happy, and your smile makes me happy.</p>
+                                            <p>Do you remember our first chat and place?</p>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-yes" onclick="nextStep(2)">Tell Me More ✨</button>
+                                </div>
+
+                                <div id="step-2" class="step hidden">
+                                    <div class="question-card active">
+                                        <h2>Do you remember our first meet? 🥺</h2>
+                                        <div class="option-grid">
+                                            <button class="option-btn btn-small" onclick="nextStep(3)">Yes, I do!
+                                                💖</button>
+                                            <button id="no-btn-step2" class="option-btn btn-small">No, remind me!
+                                                🥺</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="step-3" class="step hidden">
+                                    <div class="question-card active">
+                                        <h2>Where should our next date be? 🍕🍣🎡</h2>
+                                        <div class="option-grid">
+                                            <button class="option-btn" onclick="nextStep(4)">Pizza Date 🍕</button>
+                                            <button class="option-btn" onclick="nextStep(4)">Movie Night 🍿</button>
+                                            <button class="option-btn" onclick="nextStep(4)">Dinner 🌌</button>
+                                            <button class="option-btn" onclick="nextStep(4)">choose yourself</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="step-4" class="step hidden">
+                                    <div class="question-card active">
+                                        <h2>Ready for a lifetime of happiness? ✨</h2>
+                                        <button class="btn btn-yes" onclick="finishSequence()">click at Your own risk
+                                            ❤️</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="final-thank-you" class="final-thank-you hidden">
+                    <h1>Thank you for being mine! 🌹</h1>
+
+                    <div class="flames-container">
+                        <h2>FLAMES Compatibility ✨</h2>
+                        <div class="flames-inputs">
+                            <input type="text" id="name1" placeholder="Your Name" class="glass-input">
+                            <input type="text" id="name2" placeholder="Soulmate's Name" class="glass-input">
+                        </div>
+                        <p class="flames-note">Note: Don't worry, I will not save it 😊</p>
+                        <button class="btn btn-yes" onclick="calculateFlames()">Check Compatibility ❤️</button>
+                        <div id="flames-result" class="flames-result hidden">
+                            <div class="result-label">Our Destiny:</div>
+                            <div id="flames-text" class="result-text"></div>
+                        </div>
+                    </div>
+                    <p>I love you forever. ❤️</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <div class="footer-content">
+            <div class="footer-credit">
+                <span>Made with ❤️ by Ramsundar</span>
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/Ramsundar-B" target="_blank" class="social-link"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
