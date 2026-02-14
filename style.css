@@ -667,6 +667,16 @@ p {
     pointer-events: all;
 }
 
+/* Hide footer and info btn when celebration is active, except on final page */
+.celebration-overlay.active:not(.show-footer)~.app-footer,
+.celebration-overlay.active:not(.show-footer)~.info-btn {
+    display: none !important;
+}
+
+body:has(.celebration-overlay.active:not(.show-footer)) .app-footer {
+    display: none !important;
+}
+
 .celebration-title {
     font-size: 4rem;
     color: var(--primary);
@@ -721,12 +731,13 @@ p {
 }
 
 .heart {
-    position: absolute;
+    position: fixed;
     color: var(--primary);
-    top: 100%;
+    top: -50px;
     opacity: 0;
     pointer-events: none;
     animation: heartFly 5s linear forwards;
+    z-index: 1000;
 }
 
 @keyframes heartFly {
@@ -736,13 +747,13 @@ p {
     }
 
     100% {
-        transform: translateY(-100vh) rotate(360deg);
+        transform: translateY(110vh) rotate(360deg);
         opacity: 0;
     }
 }
 
 .chocolate {
-    position: absolute;
+    position: fixed;
     top: -50px;
     z-index: 1000;
     font-size: 2rem;

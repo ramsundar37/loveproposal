@@ -74,6 +74,7 @@ yesBtn.addEventListener('click', () => {
     triggerConfetti();
     startHeartRain();
     startChocolateRain();
+    startBearRain();
     startComplimentShower();
 
     // Wait a bit before starting the story page
@@ -155,6 +156,7 @@ function finishSequence() {
     storyPage.classList.add('hidden');
     celebrationMsg.classList.add('hidden');
     finalThankYou.classList.remove('hidden');
+    celebrationOverlay.classList.add('show-footer');
 
     // Animate Love Meter
     setTimeout(() => {
@@ -190,16 +192,27 @@ function triggerConfetti() {
     }, 250);
 }
 
+// Helper to get random position restricted to sides (left 20% or right 20%)
+function getRandomSidePosition() {
+    const sideWidth = 20; // 20vw
+    const isLeft = Math.random() < 0.5;
+    if (isLeft) {
+        return Math.random() * sideWidth + 'vw';
+    } else {
+        return (100 - sideWidth + Math.random() * sideWidth) + 'vw';
+    }
+}
+
 // Background Floating Hearts
 function createHeart() {
     const heart = document.createElement('div');
     heart.classList.add('heart');
     heart.innerHTML = '❤️';
-    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.left = getRandomSidePosition();
     heart.style.animationDuration = Math.random() * 2 + 3 + 's';
     heart.style.fontSize = Math.random() * 15 + 15 + 'px';
 
-    particlesContainer.appendChild(heart);
+    document.body.appendChild(heart);
 
     setTimeout(() => {
         heart.remove();
@@ -213,9 +226,8 @@ function startHeartRain() {
         const heart = document.createElement('div');
         heart.classList.add('heart');
         heart.innerHTML = '💖';
-        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.left = getRandomSidePosition();
         heart.style.fontSize = Math.random() * 20 + 20 + 'px';
-        heart.style.zIndex = '1000';
         document.body.appendChild(heart);
     }, 100);
 }
@@ -226,13 +238,27 @@ function startChocolateRain() {
         const choc = document.createElement('div');
         choc.classList.add('chocolate');
         choc.innerHTML = chocolates[Math.floor(Math.random() * chocolates.length)];
-        choc.style.left = Math.random() * 100 + 'vw';
+        choc.style.left = getRandomSidePosition();
         choc.style.fontSize = Math.random() * 20 + 20 + 'px';
         choc.style.animationDuration = Math.random() * 2 + 3 + 's';
         document.body.appendChild(choc);
 
         setTimeout(() => choc.remove(), 4000);
     }, 200);
+}
+
+function startBearRain() {
+    setInterval(() => {
+        const bear = document.createElement('div');
+        bear.classList.add('chocolate'); // Use same animation class
+        bear.innerHTML = '🧸';
+        bear.style.left = getRandomSidePosition();
+        bear.style.fontSize = Math.random() * 20 + 30 + 'px';
+        bear.style.animationDuration = Math.random() * 2 + 3 + 's';
+        document.body.appendChild(bear);
+
+        setTimeout(() => bear.remove(), 4000);
+    }, 300);
 }
 
 // FLAMES Game Logic
